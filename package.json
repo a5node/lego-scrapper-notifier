@@ -1,0 +1,28 @@
+{
+  "name": "lego-scrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "puppeteer",
+    "web-scrapping",
+    "typescript",
+    "telegram-bot"
+  ],
+  "author": "a5node",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.3.3",
+    "puppeteer": "^14.1.0",
+    "ts-node": "^10.7.0"
+  }
+}
