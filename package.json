@@ -5,7 +5,16 @@
   "main": "build/index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "/src/**/*.{js,jsx,ts,tsx}": [
+      "cd src",
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "keywords": [
     "puppeteer",
@@ -16,10 +25,16 @@
   "author": "a5node",
   "license": "ISC",
   "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1",
     "typescript": "^4.6.4"
   },
   "dependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "axios": "^0.27.2",
+    "commitlint": "^17.1.2",
     "dotenv": "^16.0.1",
     "mongoose": "^6.3.3",
     "puppeteer": "^14.1.0",
