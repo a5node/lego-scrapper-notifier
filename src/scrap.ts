@@ -28,14 +28,14 @@ function getNextPageButton() {
 function getProducts(): Product[] {
   const productElements = [...document.querySelectorAll('[data-component-type="s-search-result"]')]
   const products = productElements.map(productElement => {
-    const title = (<HTMLElement>(productElement.querySelector('[class="a-size-base-plus a-color-base a-text-normal"]')))?.innerText || 'Unknown' //productElement.querySelector('.item-name')?.getAttribute('title') || ''
+    const title = (<HTMLElement>(productElement.querySelector('[class="a-size-base-plus a-color-base a-text-normal"]')))?.innerText || 'Unknown'
     let id = ''
-    const matches = title.match(/LEGO\s(\d+)\s(\w+)/);
+    const matches = title.match(/LEGO\s(\d+)\s(\w+)/)
     if (matches) {
         id = matches[1]
     }
     else {
-      const matches = title.match(/LEGO\s(\w+)\s(\d+)\s(\w+)/);
+      const matches = title.match(/LEGO\s(\w+)\s(\d+)\s(\w+)/)
       if (matches) {
           id = matches[2]
       }

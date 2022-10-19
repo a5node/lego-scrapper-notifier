@@ -10,7 +10,7 @@ const getAxiosInstance = () => axios.create({
 });
 
 export async function sendPhotoWithCaptionToTelegram(photoUrl: string, caption: string, replyMarkup: any = undefined) {
-  if(process.env.TELEGRAM_USERID != undefined) {
+  if(process.env.TELEGRAM_USERID != undefined && process.env.TELEGRAM_USERID.length > 0) {
     try {
       const chatId = process.env.TELEGRAM_USERID
       const options = {
@@ -29,7 +29,7 @@ export async function sendPhotoWithCaptionToTelegram(photoUrl: string, caption: 
 }
 
 export async function sendTextToTelegram(text: string) {
-  if(process.env.TELEGRAM_USERID != undefined) {
+  if(process.env.TELEGRAM_USERID != undefined && process.env.TELEGRAM_USERID.length > 0) {
     try {
       const chatId = process.env.TELEGRAM_USERID
       const options = {
@@ -54,10 +54,7 @@ const eventMessage: Record<string, string> = {
 
 export async function sendProductToTelegram(product: Product, event: string) {
   const messageTitle = `<b>${eventMessage[event]}</b>: ${product.title}`
-  const priceText = Number(product.price).toLocaleString(
-    'pt-BR', 
-    { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }
-  )
+  const priceText = product.price
 
   if (event === 'now-unavailable') {
     await sendTextToTelegram(messageTitle)
